@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../style.css" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@latest"></script>
+<title>Data Storage Converter | MB, GB, TB, PB | Calcify</title>
+<meta content="Convert digital data storage units. Translate between Bytes, Kilobytes (KB), Megabytes (MB), Gigabytes (GB), and Terabytes (TB)." name="description"/>
+<meta content="data converter, gb to tb, mb to kb, byte converter, digital storage" name="keywords"/>
+<meta content="Data Storage Converter | MB, GB, TB, PB | Calcify" property="og:title"/>
+<meta content="Convert digital data storage units. Translate between Bytes, Kilobytes (KB), Megabytes (MB), Gigabytes (GB), and Terabytes (TB)." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="index, follow" name="robots"/>
+</head>
+<body class="calc-page-body">
+<header>
+<div class="nav-container">
+<a class="logo" href="../calcify.html">Calcify.</a>
+<nav class="nav-links"><a href="../calcify.html" style="color: var(--primary-color);"><i data-lucide="arrow-left" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Hub</a>
+<a href="../calcify.html#calculators">Calculators</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<main class="calc-main-container">
+<div class="calculator-box">
+<div class="modal-header"><h3 id="conv-title"><i data-lucide="hard-drive"></i> Data Storage</h3><button class="close-btn" onclick="closeAllModals()">×</button></div>
+<div class="modal-body">
+<div class="form-group"><label>Value</label><input id="conv-val" type="number"/></div>
+<div style="display:flex; gap:10px;">
+<div class="form-group" style="flex:1"><label>From</label><select id="conv-from"></select></div>
+<div class="form-group" style="flex:1"><label>To</label><select id="conv-to"></select></div>
+</div>
+<button class="btn-use" onclick="runConversion()" style="width:100%; margin: 1.5rem 0; font-size: 1.1rem; border:none; cursor:pointer;">Calculate</button>
+<div class="calc-result" id="conv-res">--</div>
+<input id="conv-type" type="hidden"/>
+</div>
+<div class="calc-history" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed var(--border-color);">
+<h4 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
+<span><i data-lucide="history" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Recent History</span>
+<button onclick="clearHistory()" style="background:none; border:none; color: #ef4444; cursor: pointer; font-size: 0.85rem;">Clear</button>
+</h4>
+<ul id="hist-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+</div>
+</div>
+<div class="calc-info">
+<h2>Digital Data &amp; Storage Size Converter</h2>
+<p>In the digital age, understanding file sizes and hard drive capacity is crucial. However, the data storage industry is notorious for a massive mathematical discrepancy that confuses millions of consumers regarding how much space their devices actually have.</p>
+<h3>The Base-10 vs. Base-2 Discrepancy</h3>
+<p>Data is stored in binary (Base-2), meaning computers count in powers of 2 (2, 4, 8, 16, 32... 1024). However, humans count in decimals (Base-10). This creates two conflicting systems:</p>
+<ul>
+<li><strong>Hard Drive Manufacturers (Decimal):</strong> Sell drives using Base-10. To them, 1 Kilobyte (KB) is exactly 1,000 Bytes. Therefore, a 1 Terabyte (TB) hard drive contains exactly 1,000,000,000,000 bytes.</li>
+<li><strong>Windows Operating Systems (Binary):</strong> Read drives using Base-2. To Windows, 1 Kilobyte (technically a Kibibyte or KiB) is 1,024 Bytes. Because 1024 is larger than 1000, the total number of "Gigabytes" Windows reports is smaller than what is on the box!</li>
+</ul>
+<p><strong>The Result:</strong> When you buy a 1 TB hard drive and plug it into a Windows PC, the PC divides the 1,000,000,000,000 bytes by 1024 three times, reporting the drive capacity as only <strong>931 GB</strong>!</p>
+<h3>Bits vs. Bytes</h3>
+<p>Internet speeds are sold in <strong>Megabits</strong> per second (Mbps), while files are measured in <strong>Megabytes</strong> (MB). There are 8 bits in a byte. If you have a 100 Mbps internet connection, your maximum download speed is actually 12.5 Megabytes per second!</p>
+</div>
+<div class="related-section" style="width: 100%; max-width: 800px; margin-top: 1rem;">
+<h3 style="margin-bottom: 1.5rem; color: var(--text-color); font-size: 1.5rem;">Related Calculators</h3>
+<div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+<a class="bento-card" href="numerical.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="calculator"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Numerical</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="speed.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="gauge"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Speed</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="time.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="timer"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Time</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+</div>
+</div>
+</main><footer>
+<div class="footer-content">
+<div>
+<h4 class="logo" style="margin-bottom: 1rem; display: block;">Calcify.</h4>
+<p style="color: #94a3b8;">Calculate anything, instantly.</p>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Quick Links</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#calculators">Calculators</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../about.html">About Us</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#faq">FAQ</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Legal</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../privacy-policy.html">Privacy Policy</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../terms-of-service.html">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+            © 2026 Calcify. All rights reserved.
+        </div>
+</footer>
+<script src="../script.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(typeof setupConverter === 'function') setupConverter('data');
+            let h3 = document.querySelector('.modal-header h3');
+            if (h3) h3.innerHTML = '<i data-lucide="hard-drive"></i> Data Storage';
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../style.css" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@latest"></script>
+<title>Temperature Converter | Celsius, Fahrenheit, Kelvin | Calcify</title>
+<meta content="Convert temperatures instantly between Celsius (°C), Fahrenheit (°F), and Kelvin (K) with our free tool." name="description"/>
+<meta content="temperature converter, celsius to fahrenheit, f to c, kelvin converter" name="keywords"/>
+<meta content="Temperature Converter | Celsius, Fahrenheit, Kelvin | Calcify" property="og:title"/>
+<meta content="Convert temperatures instantly between Celsius (°C), Fahrenheit (°F), and Kelvin (K) with our free tool." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="index, follow" name="robots"/>
+</head>
+<body class="calc-page-body">
+<header>
+<div class="nav-container">
+<a class="logo" href="../calcify.html">Calcify.</a>
+<nav class="nav-links"><a href="../calcify.html" style="color: var(--primary-color);"><i data-lucide="arrow-left" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Hub</a>
+<a href="../calcify.html#calculators">Calculators</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<main class="calc-main-container">
+<div class="calculator-box">
+<div class="modal-header"><h3><i data-lucide="thermometer"></i> Temperature</h3><button class="close-btn" onclick="closeAllModals()">×</button></div>
+<div class="modal-body">
+<div class="form-group"><label>Celsius (°C)</label><input id="temp-c" oninput="window.lastTemp='C'" type="number"/></div>
+<div class="form-group"><label>Fahrenheit (°F)</label><input id="temp-f" oninput="window.lastTemp='F'" type="number"/></div>
+<div class="form-group"><label>Kelvin (K)</label><input id="temp-k" oninput="window.lastTemp='K'" type="number"/></div>
+<button class="btn-use" onclick="if(window.lastTemp) convTemp(window.lastTemp); else convTemp('C');" style="width:100%; margin: 1.5rem 0; font-size: 1.1rem; border:none; cursor:pointer;">Calculate</button>
+</div>
+<div class="calc-history" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed var(--border-color);">
+<h4 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
+<span><i data-lucide="history" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Recent History</span>
+<button onclick="clearHistory()" style="background:none; border:none; color: #ef4444; cursor: pointer; font-size: 0.85rem;">Clear</button>
+</h4>
+<ul id="hist-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+</div>
+</div>
+<div class="calc-info">
+<h2>Temperature Scale Converter</h2>
+<p>Converting temperatures is mathematically unique. Unlike converting length (where 0 meters equals 0 feet), temperature scales have different starting points (zeroes). This means you cannot simply multiply to convert them; you must use specific algebraic formulas to account for the offset.</p>
+<h3>The Three Primary Scales</h3>
+<ul>
+<li><strong>Fahrenheit (°F):</strong> Used primarily in the US. Water freezes at 32°F and boils at 212°F.</li>
+<li><strong>Celsius (°C):</strong> The global standard. It is perfectly tethered to water: it freezes at 0°C and boils at 100°C.</li>
+<li><strong>Kelvin (K):</strong> Used entirely by scientists. It uses the exact same degree increments as Celsius, but it moves the zero point down to "Absolute Zero".</li>
+</ul>
+<h3>What is Absolute Zero?</h3>
+<p>Absolute Zero (0 Kelvin) is the lowest theoretical temperature possible in the universe. At this temperature, all atomic and molecular movement completely halts. It is physically impossible to get colder. 0 Kelvin translates to -273.15 °C or -459.67 °F.</p>
+<h3>Frequently Asked Questions</h3>
+<p><strong>Is there a temperature where Celsius and Fahrenheit are exactly the same?</strong><br/>Yes! Due to the way their formulas intersect, <strong>-40 °C is exactly equal to -40 °F</strong>.</p>
+</div>
+<div class="related-section" style="width: 100%; max-width: 800px; margin-top: 1rem;">
+<h3 style="margin-bottom: 1.5rem; color: var(--text-color); font-size: 1.5rem;">Related Calculators</h3>
+<div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+<a class="bento-card" href="mass.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="scale"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Mass</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="length.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="ruler"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Length</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="volume.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="beaker"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Volume</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+</div>
+</div>
+</main><footer>
+<div class="footer-content">
+<div>
+<h4 class="logo" style="margin-bottom: 1rem; display: block;">Calcify.</h4>
+<p style="color: #94a3b8;">Calculate anything, instantly.</p>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Quick Links</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#calculators">Calculators</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../about.html">About Us</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#faq">FAQ</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Legal</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../privacy-policy.html">Privacy Policy</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../terms-of-service.html">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+            © 2026 Calcify. All rights reserved.
+        </div>
+</footer>
+<script src="../script.js"></script>
+</body>
+</html>

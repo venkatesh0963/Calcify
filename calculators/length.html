@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../style.css" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@latest"></script>
+<title>Length &amp; Distance Converter | Calcify</title>
+<meta content="Convert between meters, kilometers, miles, inches, and feet instantly with our free length conversion tool." name="description"/>
+<meta content="length converter, distance converter, miles to km, inches to cm, measurement converter" name="keywords"/>
+<meta content="Length &amp; Distance Converter | Calcify" property="og:title"/>
+<meta content="Convert between meters, kilometers, miles, inches, and feet instantly with our free length conversion tool." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="index, follow" name="robots"/>
+</head>
+<body class="calc-page-body">
+<header>
+<div class="nav-container">
+<a class="logo" href="../calcify.html">Calcify.</a>
+<nav class="nav-links"><a href="../calcify.html" style="color: var(--primary-color);"><i data-lucide="arrow-left" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Hub</a>
+<a href="../calcify.html#calculators">Calculators</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<main class="calc-main-container">
+<div class="calculator-box">
+<div class="modal-header"><h3 id="conv-title"><i data-lucide="ruler"></i> Length</h3><button class="close-btn" onclick="closeAllModals()">×</button></div>
+<div class="modal-body">
+<div class="form-group"><label>Value</label><input id="conv-val" type="number"/></div>
+<div style="display:flex; gap:10px;">
+<div class="form-group" style="flex:1"><label>From</label><select id="conv-from"></select></div>
+<div class="form-group" style="flex:1"><label>To</label><select id="conv-to"></select></div>
+</div>
+<button class="btn-use" onclick="runConversion()" style="width:100%; margin: 1.5rem 0; font-size: 1.1rem; border:none; cursor:pointer;">Calculate</button>
+<div class="calc-result" id="conv-res">--</div>
+<input id="conv-type" type="hidden"/>
+</div>
+<div class="calc-history" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed var(--border-color);">
+<h4 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
+<span><i data-lucide="history" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Recent History</span>
+<button onclick="clearHistory()" style="background:none; border:none; color: #ef4444; cursor: pointer; font-size: 0.85rem;">Clear</button>
+</h4>
+<ul id="hist-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+</div>
+</div>
+<div class="calc-info">
+<h2>Length &amp; Distance Conversion Tool</h2>
+<p>The world is split between two primary systems of measurement: the Metric System (used by 95% of the world) and the Imperial System (used primarily by the United States, Liberia, and Myanmar). Our length converter flawlessly translates distances between these two systems.</p>
+<h3>The History of Measurement Systems</h3>
+<p>The <strong>Metric System (SI)</strong> was developed during the French Revolution in the 1790s to replace a confusing web of local measurements. It is based entirely on powers of 10, making calculations incredibly simple (1 Kilometer = 1,000 Meters = 100,000 Centimeters).</p>
+<p>The <strong>Imperial System</strong> evolved from ancient Roman and British traditions, often based on the human body (a "foot" was literally the length of a king's foot). Conversions require memorization (1 Mile = 1,760 Yards = 5,280 Feet = 63,360 Inches).</p>
+<h3>Common Conversion Reference Table</h3>
+<ul>
+<li><strong>1 Inch</strong> = exactly 2.54 Centimeters</li>
+<li><strong>1 Foot</strong> = exactly 0.3048 Meters</li>
+<li><strong>1 Mile</strong> ≈ 1.609 Kilometers</li>
+<li><strong>1 Kilometer</strong> ≈ 0.621 Miles</li>
+</ul>
+<h3>Frequently Asked Questions</h3>
+<p><strong>Why is an inch exactly 2.54 cm?</strong><br/>In 1959, the United States and Commonwealth nations signed the International Yard and Pound Agreement, mathematically redefining the inch to be exactly 25.4 millimeters to ensure industrial parts fit together globally.</p>
+</div>
+<div class="related-section" style="width: 100%; max-width: 800px; margin-top: 1rem;">
+<h3 style="margin-bottom: 1.5rem; color: var(--text-color); font-size: 1.5rem;">Related Calculators</h3>
+<div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+<a class="bento-card" href="area.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="maximize"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Area</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="volume.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="beaker"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Volume</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="mass.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="scale"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Mass</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+</div>
+</div>
+</main><footer>
+<div class="footer-content">
+<div>
+<h4 class="logo" style="margin-bottom: 1rem; display: block;">Calcify.</h4>
+<p style="color: #94a3b8;">Calculate anything, instantly.</p>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Quick Links</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#calculators">Calculators</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../about.html">About Us</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#faq">FAQ</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Legal</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../privacy-policy.html">Privacy Policy</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../terms-of-service.html">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+            © 2026 Calcify. All rights reserved.
+        </div>
+</footer>
+<script src="../script.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(typeof setupConverter === 'function') setupConverter('length');
+            let h3 = document.querySelector('.modal-header h3');
+            if (h3) h3.innerHTML = '<i data-lucide="ruler"></i> Length';
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

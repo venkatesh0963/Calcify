@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../style.css" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@latest"></script>
+<title>BMI Calculator | Body Mass Index Checker | Calcify</title>
+<meta content="Check your Body Mass Index (BMI) instantly. Understand your health metrics based on your height and weight." name="description"/>
+<meta content="bmi calculator, body mass index, health calculator, ideal weight" name="keywords"/>
+<meta content="BMI Calculator | Body Mass Index Checker | Calcify" property="og:title"/>
+<meta content="Check your Body Mass Index (BMI) instantly. Understand your health metrics based on your height and weight." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="index, follow" name="robots"/>
+</head>
+<body class="calc-page-body">
+<header>
+<div class="nav-container">
+<a class="logo" href="../calcify.html">Calcify.</a>
+<nav class="nav-links"><a href="../calcify.html" style="color: var(--primary-color);"><i data-lucide="arrow-left" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Hub</a>
+<a href="../calcify.html#calculators">Calculators</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<main class="calc-main-container">
+<div class="calculator-box">
+<div class="modal-header"><h3><i data-lucide="activity"></i> BMI</h3><button class="close-btn" onclick="closeAllModals()">×</button></div>
+<div class="modal-body">
+<div class="form-group"><label>Weight (kg)</label><input id="bmi-w" type="number"/></div>
+<div class="form-group"><label>Height (cm)</label><input id="bmi-h" type="number"/></div>
+<button class="btn-use" onclick="calcBmi()" style="width:100%; margin: 1.5rem 0; font-size: 1.1rem; border:none; cursor:pointer;">Calculate</button>
+<div class="calc-result" id="bmi-res">--</div>
+<div class="calc-sub-result" id="bmi-cat">Enter values</div>
+</div>
+<div class="calc-history" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed var(--border-color);">
+<h4 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
+<span><i data-lucide="history" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Recent History</span>
+<button onclick="clearHistory()" style="background:none; border:none; color: #ef4444; cursor: pointer; font-size: 0.85rem;">Clear</button>
+</h4>
+<ul id="hist-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+</div>
+</div>
+<div class="calc-info">
+<h2>Body Mass Index (BMI) Calculator</h2>
+<p>The Body Mass Index (BMI) is a highly utilized, standardized metric adopted by medical professionals, health researchers, and fitness experts worldwide to categorize human body weight relative to their height. It acts as a primary general screening tool to identify potential weight problems for adults and serves as a fundamental benchmark in personal health tracking.</p>
+<h3>How BMI is Calculated (The Formula)</h3>
+<p>The math behind the BMI is straightforward, relying entirely on your height and weight. Our calculator handles both the Metric and Imperial systems automatically.</p>
+<ul>
+<li><strong>Metric Formula</strong>: <code>BMI = Weight in Kilograms / (Height in Meters)²</code></li>
+<li><strong>Imperial Formula</strong>: <code>BMI = 703 × Weight in Pounds / (Height in Inches)²</code></li>
+</ul>
+<p>For example, if you weigh 70 kg and are 1.75 meters tall, your BMI is calculated as <code>70 / (1.75 × 1.75) = 22.86</code>.</p>
+<h3>Standard BMI Categories (WHO Guidelines)</h3>
+<p>The World Health Organization (WHO) provides the following internationally recognized classifications:</p>
+<ul>
+<li><strong>Underweight (Below 18.5):</strong> Indicates a potential nutritional deficiency or underlying health issue. Consulting a nutritionist is advised.</li>
+<li><strong>Normal weight (18.5 – 24.9):</strong> The optimal weight range associated with the lowest risk of cardiovascular diseases.</li>
+<li><strong>Overweight (25.0 – 29.9):</strong> Indicates excess body weight. Lifestyle changes such as diet modification and exercise are typically recommended.</li>
+<li><strong>Obese (30.0 and above):</strong> Indicates a significant excess of body fat, which highly correlates with increased risks of diabetes, heart disease, and hypertension.</li>
+</ul>
+<h3>Limitations of the BMI</h3>
+<p>While BMI is a fantastic population-level screening tool, it has notable limitations on an individual basis. BMI <strong>does not measure body fat directly</strong>. It cannot distinguish between muscle mass, bone density, and fat. For example, professional bodybuilders often score in the "Obese" category because muscle is significantly denser and heavier than fat. Additionally, it does not account for age, gender, or fat distribution (e.g., visceral vs. subcutaneous fat).</p>
+<h3>Frequently Asked Questions</h3>
+<p><strong>Is BMI accurate for children?</strong><br/>No. Children and teens use a different percentile-based BMI chart that compares their numbers against other children of the same age and sex.</p>
+<p><strong>Should I solely rely on my BMI?</strong><br/>No. BMI should be viewed as one piece of the puzzle. You should also consider body fat percentage, waist circumference, blood pressure, and cholesterol levels for a complete health picture.</p>
+</div>
+<div class="related-section" style="width: 100%; max-width: 800px; margin-top: 1rem;">
+<h3 style="margin-bottom: 1.5rem; color: var(--text-color); font-size: 1.5rem;">Related Calculators</h3>
+<div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+<a class="bento-card" href="mass.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="scale"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Mass</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="length.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="ruler"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Length</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="volume.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="beaker"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Volume</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+</div>
+</div>
+</main><footer>
+<div class="footer-content">
+<div>
+<h4 class="logo" style="margin-bottom: 1rem; display: block;">Calcify.</h4>
+<p style="color: #94a3b8;">Calculate anything, instantly.</p>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Quick Links</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#calculators">Calculators</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../about.html">About Us</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#faq">FAQ</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Legal</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../privacy-policy.html">Privacy Policy</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../terms-of-service.html">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+            © 2026 Calcify. All rights reserved.
+        </div>
+</footer>
+<script src="../script.js"></script>
+</body>
+</html>

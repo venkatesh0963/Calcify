@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../style.css" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@latest"></script>
+<title>Live Currency Converter &amp; Exchange Rates | Calcify</title>
+<meta content="Convert USD, EUR, GBP, JPY, and other global currencies instantly with our free live currency converter." name="description"/>
+<meta content="currency converter, exchange rates, usd to eur, money converter, fx rates" name="keywords"/>
+<meta content="Live Currency Converter &amp; Exchange Rates | Calcify" property="og:title"/>
+<meta content="Convert USD, EUR, GBP, JPY, and other global currencies instantly with our free live currency converter." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="index, follow" name="robots"/>
+</head>
+<body class="calc-page-body">
+<header>
+<div class="nav-container">
+<a class="logo" href="../calcify.html">Calcify.</a>
+<nav class="nav-links"><a href="../calcify.html" style="color: var(--primary-color);"><i data-lucide="arrow-left" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Hub</a>
+<a href="../calcify.html#calculators">Calculators</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<main class="calc-main-container">
+<div class="calculator-box">
+<div class="modal-header"><h3 id="conv-title"><i data-lucide="coins"></i> Currency</h3><button class="close-btn" onclick="closeAllModals()">×</button></div>
+<div class="modal-body">
+<div class="form-group"><label>Value</label><input id="conv-val" type="number"/></div>
+<div style="display:flex; gap:10px;">
+<div class="form-group" style="flex:1"><label>From</label><select id="conv-from"></select></div>
+<div class="form-group" style="flex:1"><label>To</label><select id="conv-to"></select></div>
+</div>
+<button class="btn-use" onclick="runConversion()" style="width:100%; margin: 1.5rem 0; font-size: 1.1rem; border:none; cursor:pointer;">Calculate</button>
+<div class="calc-result" id="conv-res">--</div>
+<input id="conv-type" type="hidden"/>
+</div>
+<div class="calc-history" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed var(--border-color);">
+<h4 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
+<span><i data-lucide="history" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Recent History</span>
+<button onclick="clearHistory()" style="background:none; border:none; color: #ef4444; cursor: pointer; font-size: 0.85rem;">Clear</button>
+</h4>
+<ul id="hist-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+</div>
+</div>
+<div class="calc-info">
+<h2>Live Global Currency Converter</h2>
+<p>In an increasingly globalized economy, understanding foreign exchange (Forex) rates is essential. Whether you are an e-commerce business selling internationally, a tourist planning a vacation to Europe, or a day trader analyzing macroeconomics, our currency converter provides the accurate exchange ratios you need.</p>
+<h3>How Currency Exchange Rates Work</h3>
+<p>Currencies are always traded and priced in pairs (e.g., USD/EUR). The first currency is the <strong>Base</strong>, and the second is the <strong>Quote</strong>. If the USD/EUR rate is 0.92, it means 1 US Dollar can purchase 0.92 Euros.</p>
+<p>Conversion Formula: <code>Target Amount = Source Amount × (Target Rate / Source Rate)</code></p>
+<h3>Why Do Exchange Rates Fluctuate?</h3>
+<p>Fiat currency values are not static; they float freely on the open market and change every millisecond based on:</p>
+<ul>
+<li><strong>Interest Rates:</strong> Central banks (like the US Federal Reserve) raise rates to combat inflation. Higher rates attract foreign investment, increasing demand and value for that currency.</li>
+<li><strong>Economic Performance:</strong> High GDP growth, low unemployment, and stable trade balances strengthen a currency.</li>
+<li><strong>Geopolitics:</strong> Political instability or war can cause investors to flee a local currency for "safe haven" currencies like the US Dollar or Swiss Franc.</li>
+</ul>
+<h3>Frequently Asked Questions</h3>
+<p><strong>Are these rates exactly what my bank will charge?</strong><br/>No. Our calculator provides the "mid-market" rate (the true rate banks use to trade with each other). Your personal bank or credit card will usually add a 1% to 3% markup or spread on top of this rate as their profit margin.</p>
+</div>
+<div class="related-section" style="width: 100%; max-width: 800px; margin-top: 1rem;">
+<h3 style="margin-bottom: 1.5rem; color: var(--text-color); font-size: 1.5rem;">Related Calculators</h3>
+<div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+<a class="bento-card" href="finance.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="landmark"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Finance</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="discount.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="tag"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Discount</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="gst.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="receipt"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">GST Calculator</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+</div>
+</div>
+</main><footer>
+<div class="footer-content">
+<div>
+<h4 class="logo" style="margin-bottom: 1rem; display: block;">Calcify.</h4>
+<p style="color: #94a3b8;">Calculate anything, instantly.</p>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Quick Links</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#calculators">Calculators</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../about.html">About Us</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#faq">FAQ</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Legal</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../privacy-policy.html">Privacy Policy</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../terms-of-service.html">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+            © 2026 Calcify. All rights reserved.
+        </div>
+</footer>
+<script src="../script.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(typeof setupConverter === 'function') setupConverter('currency');
+            let h3 = document.querySelector('.modal-header h3');
+            if (h3) h3.innerHTML = '<i data-lucide="coins"></i> Currency';
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

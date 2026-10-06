@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../style.css" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@latest"></script>
+<title>Time Converter | Seconds, Minutes, Hours, Days | Calcify</title>
+<meta content="Convert time units instantly. Calculate the exact conversion between seconds, minutes, hours, days, and years." name="description"/>
+<meta content="time converter, hours to minutes, days to hours, seconds to hours" name="keywords"/>
+<meta content="Time Converter | Seconds, Minutes, Hours, Days | Calcify" property="og:title"/>
+<meta content="Convert time units instantly. Calculate the exact conversion between seconds, minutes, hours, days, and years." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="index, follow" name="robots"/>
+</head>
+<body class="calc-page-body">
+<header>
+<div class="nav-container">
+<a class="logo" href="../calcify.html">Calcify.</a>
+<nav class="nav-links"><a href="../calcify.html" style="color: var(--primary-color);"><i data-lucide="arrow-left" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Hub</a>
+<a href="../calcify.html#calculators">Calculators</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<main class="calc-main-container">
+<div class="calculator-box">
+<div class="modal-header"><h3 id="conv-title"><i data-lucide="timer"></i> Time</h3><button class="close-btn" onclick="closeAllModals()">×</button></div>
+<div class="modal-body">
+<div class="form-group"><label>Value</label><input id="conv-val" type="number"/></div>
+<div style="display:flex; gap:10px;">
+<div class="form-group" style="flex:1"><label>From</label><select id="conv-from"></select></div>
+<div class="form-group" style="flex:1"><label>To</label><select id="conv-to"></select></div>
+</div>
+<button class="btn-use" onclick="runConversion()" style="width:100%; margin: 1.5rem 0; font-size: 1.1rem; border:none; cursor:pointer;">Calculate</button>
+<div class="calc-result" id="conv-res">--</div>
+<input id="conv-type" type="hidden"/>
+</div>
+<div class="calc-history" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed var(--border-color);">
+<h4 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
+<span><i data-lucide="history" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Recent History</span>
+<button onclick="clearHistory()" style="background:none; border:none; color: #ef4444; cursor: pointer; font-size: 0.85rem;">Clear</button>
+</h4>
+<ul id="hist-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+</div>
+</div>
+<div class="calc-info">
+<h2>Time &amp; Duration Converter</h2>
+<p>Time is the only measurement system that successfully resisted decimalization. Rooted in ancient Babylonian base-60 mathematics, converting time requires jumping between base-60 (minutes/seconds), base-24 (hours), and base-365 (years), making a calculator indispensable for logistics, astronomy, and computing.</p>
+<h3>The Math of Time</h3>
+<ul>
+<li><strong>Minute:</strong> 60 Seconds</li>
+<li><strong>Hour:</strong> 60 Minutes (3,600 Seconds)</li>
+<li><strong>Day:</strong> 24 Hours (86,400 Seconds)</li>
+<li><strong>Year:</strong> 365 Days (31,536,000 Seconds)</li>
+</ul>
+<h3>What is Unix Epoch Time?</h3>
+<p>If you are a programmer, you deal with Unix Time. Instead of tracking months and years, computers simply count the total number of seconds that have elapsed since January 1, 1970, at 00:00:00 UTC. This single massive number (currently over 1.7 billion) allows computers to effortlessly calculate time differences without worrying about time zones or leap years.</p>
+<h3>Frequently Asked Questions</h3>
+<p><strong>Does this account for Leap Years?</strong><br/>Standard time converters assume a flat 365-day year for generic conversions. If you need precise calendar math that accounts for leap years, use our dedicated "Date Difference" calculator instead.</p>
+</div>
+<div class="related-section" style="width: 100%; max-width: 800px; margin-top: 1rem;">
+<h3 style="margin-bottom: 1.5rem; color: var(--text-color); font-size: 1.5rem;">Related Calculators</h3>
+<div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+<a class="bento-card" href="speed.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="gauge"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Speed</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="date.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="calendar"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Date</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="numerical.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="calculator"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Numerical</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+</div>
+</div>
+</main><footer>
+<div class="footer-content">
+<div>
+<h4 class="logo" style="margin-bottom: 1rem; display: block;">Calcify.</h4>
+<p style="color: #94a3b8;">Calculate anything, instantly.</p>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Quick Links</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#calculators">Calculators</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../about.html">About Us</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#faq">FAQ</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Legal</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../privacy-policy.html">Privacy Policy</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../terms-of-service.html">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+            © 2026 Calcify. All rights reserved.
+        </div>
+</footer>
+<script src="../script.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(typeof setupConverter === 'function') setupConverter('time');
+            let h3 = document.querySelector('.modal-header h3');
+            if (h3) h3.innerHTML = '<i data-lucide="timer"></i> Time';
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

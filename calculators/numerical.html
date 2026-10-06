@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../style.css" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@latest"></script>
+<title>Free Standard &amp; Scientific Calculator | Calcify</title>
+<meta content="Perform everyday arithmetic or complex scientific calculations instantly with our free online numerical calculator." name="description"/>
+<meta content="scientific calculator, online calculator, math calculator, basic calculator, free calculator" name="keywords"/>
+<meta content="Free Standard &amp; Scientific Calculator | Calcify" property="og:title"/>
+<meta content="Perform everyday arithmetic or complex scientific calculations instantly with our free online numerical calculator." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="index, follow" name="robots"/>
+</head>
+<body class="calc-page-body">
+<header>
+<div class="nav-container">
+<a class="logo" href="../calcify.html">Calcify.</a>
+<nav class="nav-links"><a href="../calcify.html" style="color: var(--primary-color);"><i data-lucide="arrow-left" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Hub</a>
+<a href="../calcify.html#calculators">Calculators</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<main class="calc-main-container">
+<div class="calculator-box">
+<div class="modal-header"><h3><i data-lucide="calculator"></i> Numerical</h3><button class="close-btn" onclick="closeAllModals()">×</button></div>
+<div class="modal-body">
+<div class="std-calc-display" id="std-display">0</div>
+<div class="std-calc-grid">
+<button class="std-calc-btn clear" onclick="stdClear()">C</button>
+<button class="std-calc-btn op" onclick="stdDel()">DEL</button>
+<button class="std-calc-btn op" onclick="stdOp('%')">%</button>
+<button class="std-calc-btn op" onclick="stdOp('/')">÷</button>
+<button class="std-calc-btn" onclick="stdNum('7')">7</button>
+<button class="std-calc-btn" onclick="stdNum('8')">8</button>
+<button class="std-calc-btn" onclick="stdNum('9')">9</button>
+<button class="std-calc-btn op" onclick="stdOp('*')">×</button>
+<button class="std-calc-btn" onclick="stdNum('4')">4</button>
+<button class="std-calc-btn" onclick="stdNum('5')">5</button>
+<button class="std-calc-btn" onclick="stdNum('6')">6</button>
+<button class="std-calc-btn op" onclick="stdOp('-')">-</button>
+<button class="std-calc-btn" onclick="stdNum('1')">1</button>
+<button class="std-calc-btn" onclick="stdNum('2')">2</button>
+<button class="std-calc-btn" onclick="stdNum('3')">3</button>
+<button class="std-calc-btn op" onclick="stdOp('+')">+</button>
+<button class="std-calc-btn" onclick="stdNum('0')">0</button>
+<button class="std-calc-btn" onclick="stdNum('.')">.</button>
+<button class="std-calc-btn eq" onclick="stdEq()">=</button>
+</div>
+</div>
+<div class="calc-history" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed var(--border-color);">
+<h4 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
+<span><i data-lucide="history" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Recent History</span>
+<button onclick="clearHistory()" style="background:none; border:none; color: #ef4444; cursor: pointer; font-size: 0.85rem;">Clear</button>
+</h4>
+<ul id="hist-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+</div>
+</div>
+<div class="calc-info">
+<h2>Comprehensive Numerical Calculator</h2>
+<p>The standard numerical calculator is the foundation of digital mathematics. Whether you are balancing a checkbook, completing algebra homework, or estimating grocery costs, our online calculator is designed to provide immediate, high-precision results without the need for physical hardware.</p>
+<h3>The Order of Operations (PEMDAS / BODMAS)</h3>
+<p>Unlike basic pocket calculators that execute math sequentially as you type it (where <code>2 + 3 × 4</code> equals 20), our calculator uses standard algebraic logic. It strictly follows the order of operations, ensuring that mathematical formulas are calculated correctly (where <code>2 + 3 × 4</code> correctly equals 14).</p>
+<ul>
+<li><strong>P / B:</strong> Parentheses / Brackets</li>
+<li><strong>E / O:</strong> Exponents / Orders</li>
+<li><strong>M &amp; D:</strong> Multiplication &amp; Division (left to right)</li>
+<li><strong>A &amp; S:</strong> Addition &amp; Subtraction (left to right)</li>
+</ul>
+<h3>Advanced Features &amp; Edge Cases</h3>
+<p>Our numerical engine handles floating-point arithmetic with built-in precision correctors. In standard JavaScript, calculating <code>0.1 + 0.2</code> often returns a bizarre <code>0.30000000000000004</code> due to binary floating-point limitations. Our engine intercepts these edge cases and rounds them to the mathematically correct human-readable output.</p>
+<h3>Frequently Asked Questions</h3>
+<p><strong>Why do I get an error when dividing by zero?</strong><br/>In standard arithmetic, division by zero is undefined. It is impossible to split an object into zero parts, so the calculator throws a protective Error rather than crashing.</p>
+<p><strong>How does the percentage (%) button work?</strong><br/>The percentage button converts the preceding number into its decimal fraction equivalent. For example, typing <code>50 %</code> converts the value to <code>0.5</code>, which can then be multiplied by a base number.</p>
+</div>
+<div class="related-section" style="width: 100%; max-width: 800px; margin-top: 1rem;">
+<h3 style="margin-bottom: 1.5rem; color: var(--text-color); font-size: 1.5rem;">Related Calculators</h3>
+<div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+<a class="bento-card" href="finance.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="landmark"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Finance</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="discount.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="tag"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Discount</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="gst.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="receipt"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">GST Calculator</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+</div>
+</div>
+</main><footer>
+<div class="footer-content">
+<div>
+<h4 class="logo" style="margin-bottom: 1rem; display: block;">Calcify.</h4>
+<p style="color: #94a3b8;">Calculate anything, instantly.</p>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Quick Links</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#calculators">Calculators</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../about.html">About Us</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#faq">FAQ</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Legal</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../privacy-policy.html">Privacy Policy</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../terms-of-service.html">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+            © 2026 Calcify. All rights reserved.
+        </div>
+</footer>
+<script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../style.css" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@latest"></script>
+<title>GST &amp; Tax Calculator | Add or Remove Tax | Calcify</title>
+<meta content="Easily add or remove Goods and Services Tax (GST) or Sales Tax from any amount with our free online calculator." name="description"/>
+<meta content="gst calculator, tax calculator, add tax, remove tax, sales tax" name="keywords"/>
+<meta content="GST &amp; Tax Calculator | Add or Remove Tax | Calcify" property="og:title"/>
+<meta content="Easily add or remove Goods and Services Tax (GST) or Sales Tax from any amount with our free online calculator." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="index, follow" name="robots"/>
+</head>
+<body class="calc-page-body">
+<header>
+<div class="nav-container">
+<a class="logo" href="../calcify.html">Calcify.</a>
+<nav class="nav-links"><a href="../calcify.html" style="color: var(--primary-color);"><i data-lucide="arrow-left" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Hub</a>
+<a href="../calcify.html#calculators">Calculators</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<main class="calc-main-container">
+<div class="calculator-box">
+<div class="modal-header"><h3><i data-lucide="receipt"></i> GST Calculator</h3><button class="close-btn" onclick="closeAllModals()">×</button></div>
+<div class="modal-body">
+<div class="form-group"><label>Initial Amount</label><input id="gst-amt" type="number"/></div>
+<div class="form-group"><label>GST Rate %</label><input id="gst-rate" type="number" value="10"/></div>
+<button class="btn-use" onclick="calcGst()" style="width:100%; margin: 1.5rem 0; font-size: 1.1rem; border:none; cursor:pointer;">Calculate</button>
+<div style="display:flex; gap:10px; margin-top:1.5rem;">
+<div style="flex:1; background:#f1f5f9; padding:15px; border-radius:8px; text-align:center;">
+<div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:5px;">Add GST (+Tax)</div>
+<div id="gst-add" style="font-weight:bold; color:var(--primary-color); font-size:1.2rem;">--</div>
+</div>
+<div style="flex:1; background:#f1f5f9; padding:15px; border-radius:8px; text-align:center;">
+<div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:5px;">Remove GST (-Tax)</div>
+<div id="gst-sub" style="font-weight:bold; color:#ef4444; font-size:1.2rem;">--</div>
+</div>
+</div>
+</div>
+<div class="calc-history" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed var(--border-color);">
+<h4 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
+<span><i data-lucide="history" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Recent History</span>
+<button onclick="clearHistory()" style="background:none; border:none; color: #ef4444; cursor: pointer; font-size: 0.85rem;">Clear</button>
+</h4>
+<ul id="hist-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+</div>
+</div>
+<div class="calc-info">
+<h2>Comprehensive GST &amp; Sales Tax Calculator</h2>
+<p>Whether you are a small business owner issuing invoices, an accountant balancing the books, or a consumer trying to figure out the true cost of an item, our GST (Goods and Services Tax) calculator is the ultimate tool. It allows you to seamlessly add tax to a base amount or extract the hidden tax from a final inclusive price.</p>
+<h3>How Sales Tax &amp; GST is Calculated (The Formulas)</h3>
+<p>Many people make the mathematical error of simply subtracting the tax percentage from the final price to find the base price. <strong>This is mathematically incorrect.</strong> Here are the proper formulas used by accountants:</p>
+<p><strong>To Add Tax (Exclusive to Inclusive):</strong></p>
+<p>When you have a base price and need to add the tax on top of it:</p>
+<ul>
+<li><code>Tax Amount = Base Price × (Tax Percentage / 100)</code></li>
+<li><code>Final Price = Base Price + Tax Amount</code></li>
+<li><em>Example:</em> A $200 item with 10% GST. <code>200 × 0.10 = $20</code>. The Final Price is <strong>$220</strong>.</li>
+</ul>
+<p><strong>To Remove Tax (Inclusive to Exclusive):</strong></p>
+<p>When you have the final receipt price and need to find out what the item cost before tax (reverse calculating):</p>
+<ul>
+<li><code>Base Price = Final Price / (1 + (Tax Percentage / 100))</code></li>
+<li><code>Tax Amount = Final Price - Base Price</code></li>
+<li><em>Example:</em> You paid $220 total, which includes 10% GST. <code>220 / 1.10 = $200</code>. The Base Price is <strong>$200</strong>, and the tax was $20.</li>
+</ul>
+<h3>Global Tax Systems Reference</h3>
+<ul>
+<li><strong>Australia/New Zealand:</strong> 10% to 15% standard GST applied to most goods and services.</li>
+<li><strong>Canada:</strong> Uses a mix of federal GST (5%) and provincial PST, sometimes combined into an HST (Harmonized Sales Tax) up to 15%.</li>
+<li><strong>Europe (VAT):</strong> Value Added Tax varies wildly by country, often ranging from 17% to 25%.</li>
+<li><strong>United States:</strong> Uses state and local Sales Tax (not a federal VAT/GST), ranging from 0% (e.g., Oregon) up to nearly 10% in some municipalities.</li>
+</ul>
+<h3>Frequently Asked Questions</h3>
+<p><strong>Why can't I just subtract 10% from the total to find the base price?</strong><br/>Because the 10% tax was calculated based on the <em>smaller</em> base number, not the larger final number! 10% of 220 is 22, meaning 220 - 22 = 198 (which is incorrect, the base was 200).</p>
+</div>
+<div class="related-section" style="width: 100%; max-width: 800px; margin-top: 1rem;">
+<h3 style="margin-bottom: 1.5rem; color: var(--text-color); font-size: 1.5rem;">Related Calculators</h3>
+<div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+<a class="bento-card" href="discount.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="tag"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Discount</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="finance.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="landmark"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Finance</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="currency.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="coins"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Currency</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+</div>
+</div>
+</main><footer>
+<div class="footer-content">
+<div>
+<h4 class="logo" style="margin-bottom: 1rem; display: block;">Calcify.</h4>
+<p style="color: #94a3b8;">Calculate anything, instantly.</p>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Quick Links</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#calculators">Calculators</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../about.html">About Us</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#faq">FAQ</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Legal</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../privacy-policy.html">Privacy Policy</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../terms-of-service.html">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+            © 2026 Calcify. All rights reserved.
+        </div>
+</footer>
+<script src="../script.js"></script>
+</body>
+</html>

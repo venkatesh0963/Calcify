@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../style.css" rel="stylesheet"/>
+<script src="https://unpkg.com/lucide@latest"></script>
+<title>Area Converter | Acres, Hectares, Sq Meters | Calcify</title>
+<meta content="Convert area measurements instantly. Switch between acres, hectares, square meters, and square feet." name="description"/>
+<meta content="area converter, acres to hectares, square meters to square feet, land measurement" name="keywords"/>
+<meta content="Area Converter | Acres, Hectares, Sq Meters | Calcify" property="og:title"/>
+<meta content="Convert area measurements instantly. Switch between acres, hectares, square meters, and square feet." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="index, follow" name="robots"/>
+</head>
+<body class="calc-page-body">
+<header>
+<div class="nav-container">
+<a class="logo" href="../calcify.html">Calcify.</a>
+<nav class="nav-links"><a href="../calcify.html" style="color: var(--primary-color);"><i data-lucide="arrow-left" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Hub</a>
+<a href="../calcify.html#calculators">Calculators</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</nav>
+</div>
+</header>
+<main class="calc-main-container">
+<div class="calculator-box">
+<div class="modal-header"><h3 id="conv-title"><i data-lucide="maximize"></i> Area</h3><button class="close-btn" onclick="closeAllModals()">×</button></div>
+<div class="modal-body">
+<div class="form-group"><label>Value</label><input id="conv-val" type="number"/></div>
+<div style="display:flex; gap:10px;">
+<div class="form-group" style="flex:1"><label>From</label><select id="conv-from"></select></div>
+<div class="form-group" style="flex:1"><label>To</label><select id="conv-to"></select></div>
+</div>
+<button class="btn-use" onclick="runConversion()" style="width:100%; margin: 1.5rem 0; font-size: 1.1rem; border:none; cursor:pointer;">Calculate</button>
+<div class="calc-result" id="conv-res">--</div>
+<input id="conv-type" type="hidden"/>
+</div>
+<div class="calc-history" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed var(--border-color);">
+<h4 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
+<span><i data-lucide="history" style="width: 16px; height: 16px; margin-right: 4px; vertical-align: text-bottom;"></i> Recent History</span>
+<button onclick="clearHistory()" style="background:none; border:none; color: #ef4444; cursor: pointer; font-size: 0.85rem;">Clear</button>
+</h4>
+<ul id="hist-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+</div>
+</div>
+<div class="calc-info">
+<h2>Area &amp; Land Measurement Converter</h2>
+<p>Calculating two-dimensional space is essential in real estate, architecture, farming, and interior design. Because area is squared (two-dimensional), conversions are exponential compared to standard length conversions, making mental math extremely difficult without a calculator.</p>
+<h3>How Area is Calculated</h3>
+<p>The area of a standard rectangle or square is found by multiplying its Length by its Width (<code>Area = L × W</code>). However, because you are multiplying the units together, the resulting unit is squared. This means that while there are 3 feet in a yard, there are <strong>9 square feet</strong> (3×3) in a square yard.</p>
+<h3>Common Area Units Explained</h3>
+<ul>
+<li><strong>Acre:</strong> Primarily used in the US and UK for land tracts. Originally defined in the Middle Ages as the amount of land a yoke of oxen could plow in one day. (1 Acre = 43,560 sq ft).</li>
+<li><strong>Hectare (ha):</strong> The metric standard for large land masses. (1 Hectare = 10,000 square meters, or approx. 2.47 Acres).</li>
+<li><strong>Square Meter (m²):</strong> The standard SI unit for everyday area measurement, such as room sizes or flooring.</li>
+</ul>
+<h3>Frequently Asked Questions</h3>
+<p><strong>Why are real estate sizes so confusing?</strong><br/>Real estate spans different eras of measurement. A US property might list the lot size in Acres, but the house interior in Square Feet, requiring two different conversion paradigms.</p>
+</div>
+<div class="related-section" style="width: 100%; max-width: 800px; margin-top: 1rem;">
+<h3 style="margin-bottom: 1.5rem; color: var(--text-color); font-size: 1.5rem;">Related Calculators</h3>
+<div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+<a class="bento-card" href="length.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="ruler"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Length</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="volume.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="beaker"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Volume</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+<a class="bento-card" href="speed.html" style="text-decoration: none; max-width: 250px; background: white;">
+<div class="card-icon" style="background: #f1f5f9; color: var(--primary-color);"><i data-lucide="gauge"></i></div>
+<div class="card-content">
+<h3 style="font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.5rem;">Speed</h3>
+<p style="font-size: 0.9rem; color: var(--text-muted);">Try this related calculator</p>
+</div>
+</a>
+</div>
+</div>
+</main><footer>
+<div class="footer-content">
+<div>
+<h4 class="logo" style="margin-bottom: 1rem; display: block;">Calcify.</h4>
+<p style="color: #94a3b8;">Calculate anything, instantly.</p>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Quick Links</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#calculators">Calculators</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../about.html">About Us</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../calcify.html#faq">FAQ</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 style="margin-bottom: 1rem; font-size: 1.1rem;">Legal</h4>
+<ul style="padding:0;">
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../privacy-policy.html">Privacy Policy</a></li>
+<li style="margin-bottom:0.5rem; color:#94a3b8;"><a href="../terms-of-service.html">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+            © 2026 Calcify. All rights reserved.
+        </div>
+</footer>
+<script src="../script.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(typeof setupConverter === 'function') setupConverter('area');
+            let h3 = document.querySelector('.modal-header h3');
+            if (h3) h3.innerHTML = '<i data-lucide="maximize"></i> Area';
+            if(typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
